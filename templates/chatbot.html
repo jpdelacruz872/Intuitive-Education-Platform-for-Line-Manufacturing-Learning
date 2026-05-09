@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learning site</title>
+    <title>Chatbot</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <div id="body">
-        <div id="main_menu">
+    <div class="body">
+        <div class="main_menu">
             <nav>
                 <button>Log in</button>
                 <button>Create flow chart</button>
@@ -16,6 +16,9 @@
                 <button id="simulator_btn">Simulator</button>
             </nav>
         </div>
+        <textarea id="prompt_input" placeholder="IMPUT A PROMPT", type="text"></textarea>
+        <button id="send_button">SEND</button>
+        <p id="gemini_answer">ANSWER</p>
     </div>
     <script src="/static/script.js"></script>
 </body>
