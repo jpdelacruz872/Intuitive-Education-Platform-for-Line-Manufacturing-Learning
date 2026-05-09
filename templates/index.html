@@ -4,18 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learning site</title>
-    <link rel="stylesheet" href="/style.css">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+
     <div id="main_menu">
         <nav>
-            <button>Log in</button>
-            <button>Create flow chart</button>
-            <button>Chat bot</button>
-            <button>Simulator</button>
-        </nav>
+            <a href="{{ url_for('home') }}">
+                <button type="button">Home</button>
+            </a>
 
+            <a href="{{ url_for('login') }}">
+                <button type="button">Log in</button>
+            </a>
+
+            <a href="{{ url_for('flowchart') }}">
+                <button type="button">Create flow chart</button>
+            </a>
+
+            <a href="{{ url_for('chatbot') }}">
+                <button type="button">Chat bot</button>
+            </a>
+
+            <a href="{{ url_for('simulator') }}">
+                <button type="button">Simulator</button>
+            </a>
+        </nav>
     </div>
-    <script src="/script.js"></script>
+
+    <main>
+        <section class="hero">
+            <div class="hero_text">
+                <span class="tag">AI + Robotics Learning</span>
+
+                <h1>Learn robotics by giving instructions to an AI</h1>
+
+                <p>
+                    Type a simple command and watch how the system translates
+                    it into actions for a robot simulation in Webots.
+                </p>
+
+                <div class="hero_buttons">
+                    <a href="{{ url_for('simulator') }}">
+                        <button type="button" class="secondary_btn">Try simulator</button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero_visual">
+                <div class="simulation_card">
+                    <div class="card_header">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                        <div class="robot_area">
+                            <div class="robot_head">
+                                <div class="robot_mouth"></div>
+                            </div>  
+
+                            <div class="robot_body"></div>
+                            <div class="robot_arm left"></div>
+                            <div class="robot_arm right"></div>
+                        </div>  
+                    <div class="command_box">
+                        <p>Command:</p>
+                        <strong>Move forward and turn right</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="info_section">
+            <div class="info_card">
+                <h3>Write instructions</h3>
+                <p>Use natural language instead of complicated code.</p>
+            </div>
+
+            <div class="info_card">
+                <h3>Understand logic</h3>
+                <p>See how your command becomes a sequence of actions.</p>
+            </div>
+
+            <div class="info_card">
+                <h3>Simulate robots</h3>
+                <p>Connect your learning process with Webots simulations.</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
