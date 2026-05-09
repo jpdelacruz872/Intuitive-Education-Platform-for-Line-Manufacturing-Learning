@@ -1,0 +1,81 @@
+/* Este estilo SOLO se aplicará a la página de Login */
+body.login-page {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* El resto de los estilos (.login-box, .btn-login, etc.) 
+   no afectarán al index a menos que uses esos nombres de clase allá. */
+   /* Caja del formulario (Login Box) */
+.login-box {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    text-align: center;
+}
+
+.login-box h2 {
+    margin-bottom: 25px;
+    color: #333;
+}
+
+/* Grupos de entrada (Labels e Inputs) */
+.input-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #555;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box; /* Evita que el input se salga del cuadro */
+}
+
+/* Botones y Enlaces */
+.actions {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-login {
+    background: #9b59b6;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.btn-login:hover {
+    background: #8e44ad;
+}
+
+.btn-back {
+    text-decoration: none;
+    color: #71b7e6;
+    font-size: 14px;
+}
+
+.btn-back:hover {
+    text-decoration: underline;
+}
