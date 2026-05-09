@@ -3,21 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Server</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <title>Simulator</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="body">
-        <div id="main_menu">
-            <nav>
+
+    <div id="main_menu">
+        <nav>
+            <a href="{{ url_for('login') }}">
                 <button>Log in</button>
-                <button>Create flow chart</button>
+            </a>
+
+            <button>Create flow chart</button>
+
+            <a href="{{ url_for('chatbot') }}">
                 <button id="chatbot_btn">Chat bot</button>
+            </a>
+
+            <a href="{{ url_for('simulator') }}">
                 <button id="simulator_btn">Simulator</button>
-            </nav>
-        </div>
-        <iframe id="webots" src="http://localhost:1234/index.html"></iframe>
+            </a>
+        </nav>
     </div>
-    <script src="/static/script.js"></script>
+
+    <main class="simulator_page">
+        <section class="simulator_panel">
+            <h1>Webots Simulator</h1>
+
+            <p>
+                This section connects the learning platform with a local Webots simulation.
+            </p>
+
+            <iframe id="webots" src="http://localhost:1234/index.html"></iframe>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

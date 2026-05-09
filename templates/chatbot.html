@@ -4,22 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot</title>
-    <link rel="stylesheet" href="/static/style.css">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="body">
-        <div class="main_menu">
-            <nav>
+
+    <div id="main_menu">
+        <nav>
+            <a href="{{ url_for('login') }}">
                 <button>Log in</button>
-                <button>Create flow chart</button>
+            </a>
+
+            <button>Create flow chart</button>
+
+            <a href="{{ url_for('chatbot') }}">
                 <button id="chatbot_btn">Chat bot</button>
+            </a>
+
+            <a href="{{ url_for('simulator') }}">
                 <button id="simulator_btn">Simulator</button>
-            </nav>
-        </div>
-        <textarea id="prompt_input" placeholder="IMPUT A PROMPT", type="text"></textarea>
-        <button id="send_button">SEND</button>
-        <p id="gemini_answer">ANSWER</p>
+            </a>
+        </nav>
     </div>
-    <script src="/static/script.js"></script>
+
+    <main class="chatbot_page">
+        <section class="chatbot_panel">
+            <h1>Robot Command Chatbot</h1>
+
+            <p>
+                Write a command in natural language and the system will generate
+                a response that can help control or understand the robot simulation.
+            </p>
+
+            <textarea id="prompt_input" placeholder="Input a prompt"></textarea>
+
+            <button id="send_button" class="secondary_btn">Send</button>
+
+            <div class="answer_box">
+                <p id="gemini_answer">Answer will appear here.</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
