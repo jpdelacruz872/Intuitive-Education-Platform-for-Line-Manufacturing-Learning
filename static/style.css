@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+}
+
+/* Barra superior */
+#main_menu {
+    width: 100%;
+    background-color: #1f2937;
+    padding: 14px 32px;
+    box-sizing: border-box;
+}
+
+/* Contenedor de botones */
+#main_menu nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 14px;
+}
+
+/* Botones */
+#main_menu button {
+    background-color: #374151;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+/* Efecto al pasar el mouse */
+#main_menu button:hover {
+    background-color: #4b5563;
+    transform: translateY(-1px);
+}
