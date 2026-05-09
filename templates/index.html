@@ -11,11 +11,17 @@
 
     <div id="main_menu">
         <nav>
+            <a href="{{ url_for('home') }}">
+                <button type="button">Home</button>
+            </a>
+
             <a href="{{ url_for('login') }}">
                 <button type="button">Log in</button>
             </a>
 
-            <button type="button">Create flow chart</button>
+            <a href="{{ url_for('flowchart') }}">
+                <button type="button">Create flow chart</button>
+            </a>
 
             <a href="{{ url_for('chatbot') }}">
                 <button type="button">Chat bot</button>
@@ -54,13 +60,15 @@
                         <span></span>
                     </div>
 
-                    <div class="robot_area">
-                        <div class="robot_head"></div>
-                        <div class="robot_body"></div>
-                        <div class="robot_arm left"></div>
-                        <div class="robot_arm right"></div>
-                    </div>
+                        <div class="robot_area">
+                            <div class="robot_head">
+                                <div class="robot_mouth"></div>
+                            </div>  
 
+                            <div class="robot_body"></div>
+                            <div class="robot_arm left"></div>
+                            <div class="robot_arm right"></div>
+                        </div>  
                     <div class="command_box">
                         <p>Command:</p>
                         <strong>Move forward and turn right</strong>

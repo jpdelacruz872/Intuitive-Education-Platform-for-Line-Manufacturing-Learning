@@ -177,9 +177,16 @@ body {
     background-color: var(--black);
     border-radius: 50%;
     position: absolute;
-    top: 22px;
+    top: 20px;
 }
 
+.robot_head::before {
+    left: 18px;
+}
+
+.robot_head::after {
+    right: 18px;
+}
 .robot_body {
     width: 120px;
     height: 90px;
@@ -499,4 +506,14 @@ body.login-page {
     border: 1px solid #2a2a2a;
     border-radius: 12px;
     background-color: #000000;
+}
+.robot_mouth {
+    width: 20px;
+    height: 8px;
+    border-bottom: 2px solid var(--black);
+    border-radius: 0 0 16px 16px;
+    position: absolute;
+    left: 50%;
+    top: 31px;
+    transform: translateX(-50%);
 }

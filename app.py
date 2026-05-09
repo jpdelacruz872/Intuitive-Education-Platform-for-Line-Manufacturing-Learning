@@ -33,6 +33,9 @@ def chatbot():
 def simulator():
     return render_template("server.html")
 
+@app.route("/flowchart")
+def flowchart():
+    return render_template("diagram.html")
 
 @app.route("/api/chatbot", methods=["POST"])
 def chat():
