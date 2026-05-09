@@ -12,12 +12,18 @@
     <div id="main_menu">
         <nav>
             <a href="{{ url_for('login') }}">
-                <button>Log in</button>
+                <button type="button">Log in</button>
             </a>
 
-            <button>Create flow chart</button>
-            <button>Chat bot</button>
-            <button>Simulator</button>
+            <button type="button">Create flow chart</button>
+
+            <a href="{{ url_for('chatbot') }}">
+                <button type="button">Chat bot</button>
+            </a>
+
+            <a href="{{ url_for('simulator') }}">
+                <button type="button">Simulator</button>
+            </a>
         </nav>
     </div>
 
@@ -34,7 +40,9 @@
                 </p>
 
                 <div class="hero_buttons">
-                    <button class="secondary_btn">Try simulator</button>
+                    <a href="{{ url_for('simulator') }}">
+                        <button type="button" class="secondary_btn">Try simulator</button>
+                    </a>
                 </div>
             </div>
 
