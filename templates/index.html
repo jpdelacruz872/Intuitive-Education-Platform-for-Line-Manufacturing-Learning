@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learning site</title>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
     <div id="main_menu">
         <nav>
-            <button onclick="window.location.href='login.html'">Log in</button>
+            <a href="{{ url_for('login') }}">
+                <button>Log in</button>
+            </a>
+
             <button>Create flow chart</button>
             <button>Chat bot</button>
             <button>Simulator</button>
@@ -25,8 +29,8 @@
                 <h1>Learn robotics by giving instructions to an AI</h1>
 
                 <p>
-                    Type a simple command and watch how the system translates it
-                    into actions for a robot simulation in Webots.
+                    Type a simple command and watch how the system translates
+                    it into actions for a robot simulation in Webots.
                 </p>
 
                 <div class="hero_buttons">
