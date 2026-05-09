@@ -45,12 +45,67 @@ def chat():
     if client is None:
         return jsonify({"error": "GEMINI_API_KEY is not configured."}), 500
 
+    review_prompt = f"""
+Categorize the following user prompt into one of the following two categories:
+'CODE' or 'DOUBT'.
+
+If the user wants to chat, solve a doubt, or ask a general-purpose question,
+classify it as 'DOUBT'.
+
+If the user wants to control a robot, generate Webots code, or create a robot
+controller, classify it as 'CODE'.
+
+Only answer with one word: CODE or DOUBT.
+
+User prompt: {prompt}
+"""
+
     try:
-        response = client.models.generate_content(
+        category_answer = client.models.generate_content(
             model="gemini-2.0-flash",
-            contents=prompt
+            contents=review_prompt
         )
-        return jsonify({"reply": response.text})
+
+        category = category_answer.text.strip().upper()
+
+        if "CODE" in category:
+            chosen_model = "gemini-2.0-pro"
+            final_prompt = f"""
+You are a coding expert in manufacturing lines, automation, and Webots simulator.
+
+Generate a Python Webots controller for the following request:
+
+{prompt}
+
+FOR YOUR ANSWER FORMAT:
+- Only provide Python code.
+- Do not include Markdown.
+- Do not include explanations.
+- Do not wrap the code in triple backticks.
+- The code should be ready to save as controller.py and use inside Webots.
+"""
+
+        else:
+            chosen_model = "gemini-2.0-flash"
+            final_prompt = f"""
+You are a teacher and expert in manufacturing lines, automation, robotics,
+and the Webots simulator.
+
+Help a student with the following question:
+
+{prompt}
+"""
+
+        response = client.models.generate_content(
+            model=chosen_model,
+            contents=final_prompt
+        )
+
+        return jsonify({
+            "reply": response.text,
+            "model": chosen_model
+        })
+
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
