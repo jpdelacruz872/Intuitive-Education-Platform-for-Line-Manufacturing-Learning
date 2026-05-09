@@ -1,0 +1,10 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Barra superior */
+#main_menu {
+    background-color: #222;
+    padding: 15px 30px;
+}
