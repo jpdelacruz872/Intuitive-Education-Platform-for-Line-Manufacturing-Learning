@@ -1,81 +1,98 @@
-/* Este estilo SOLO se aplicará a la página de Login */
+/* Fondo totalmente negro solo para Login */
 body.login-page {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    font-family: 'Montserrat', sans-serif;
+    background-color: #000000; /* Negro total */
     height: 100vh;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: white; /* Texto blanco global */
 }
 
-/* El resto de los estilos (.login-box, .btn-login, etc.) 
-   no afectarán al index a menos que uses esos nombres de clase allá. */
-   /* Caja del formulario (Login Box) */
+/* Quitamos la "cajita" visible */
 .login-box {
-    background: white;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    background: transparent; /* Sin fondo */
+    padding: 20px;
     width: 350px;
     text-align: center;
+    box-shadow: none; /* Quitamos la sombra */
 }
 
 .login-box h2 {
-    margin-bottom: 25px;
-    color: #333;
+    margin-bottom: 50px;
+    color: #ffffff;
+    font-weight: 500; /* Un poco más delgado para estilo minimalista */
+    letter-spacing: 3px;
 }
 
-/* Grupos de entrada (Labels e Inputs) */
+/* Este es el contenedor de cada par (etiqueta + input) */
 .input-group {
     text-align: left;
-    margin-bottom: 15px;
+    margin-bottom: 25px; /* <--- Aumenta este número para separar más los grupos */
 }
 
+/* Estilo para las etiquetas */
 .input-group label {
     display: block;
-    margin-bottom: 5px;
-    font-weight: 600;
-    color: #555;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #cccccc; /* Gris claro para las etiquetas */
 }
 
+/* Las únicas cajitas visibles: los Inputs */
 .input-group input {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    box-sizing: border-box; /* Evita que el input se salga del cuadro */
-}
-
-/* Botones y Enlaces */
-.actions {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.btn-login {
-    background: #9b59b6;
+    background-color: #1a1a1a; /* Gris muy oscuro casi negro */
+    border: 1px solid #333; /* Borde sutil */
+    border-radius: 4px;
     color: white;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+/* Efecto cuando haces clic en el input */
+.input-group input:focus {
+    outline: none;
+    border-color: #ffffff; /* El borde brilla en blanco al escribir */
+}
+
+/* Botón de entrada */
+.btn-login {
+    background-color: #ffffff; /* Botón blanco */
+    color: #000000; /* Texto negro */
     border: none;
-    padding: 12px;
-    border-radius: 6px;
+    padding: 9px;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
-    transition: background 0.3s;
+    font-weight: bold;
+    font-size: 15px;
+    margin-top: 40px;
+    transition: opacity 0.3s;
 }
 
 .btn-login:hover {
-    background: #8e44ad;
+    opacity: 0.8; /* Efecto sutil de hover */
 }
 
+/* Enlace de volver */
 .btn-back {
     text-decoration: none;
-    color: #71b7e6;
-    font-size: 14px;
+    color: #666;
+    font-size: 15px;
+    margin-top: 45px;
 }
 
 .btn-back:hover {
-    text-decoration: underline;
+    color: #ffffff;
+}
+
+.actions {
+    margin-top: 30px; /* Separa los botones del campo de contraseña */
+    display: flex;
+    flex-direction: row; /* Los pone en fila */
+    align-items: center; /* Los alinea verticalmente al centro */
+    justify-content: center; /* Los centra horizontalmente */
+    gap: 30px; /* <--- Esta es la clave: crea un hueco de 30px entre ellos */
 }
