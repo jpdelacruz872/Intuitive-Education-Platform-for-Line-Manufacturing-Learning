@@ -28,7 +28,7 @@ if (sendBtn) {
         }
 
         if (answer) {
-            answer.innerText = "Thinking...";
+            answer.innerHTML = "Conectando con Sentinela...<br><br>";
         }
 
         try {
@@ -40,13 +40,53 @@ if (sendBtn) {
                 body: JSON.stringify({ prompt: prompt })
             });
 
-            const data = await response.json();
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
 
-            if (answer) {
-                if (data.reply) {
-                    answer.innerText = data.reply;
-                } else {
-                    answer.innerText = data.error || "Something went wrong.";
+            const reader = response.body.getReader();
+            const decoder = new TextDecoder();
+            let buffer = "";
+            let outputHTML = "";
+
+            while (true) {
+                const { done, value } = await reader.read();
+                if (done) break;
+
+                buffer += decoder.decode(value, { stream: true });
+
+                // Procesar líneas completas (separadas por \n\n)
+                const lines = buffer.split("\n\n");
+                buffer = lines.pop() || "";
+
+                for (const line of lines) {
+                    if (line.startsWith("data: ")) {
+                        try {
+                            const data = JSON.parse(line.slice(6));
+
+                            if (data.error) {
+                                outputHTML += `<span style="color: red;"><strong>Error:</strong> ${data.error}</span><br>`;
+                            } else if (data.content) {
+                                // Mostrar contenido de forma clara
+                                outputHTML += `${data.content}<br>`;
+                            } else {
+                                // Mostrar otros campos disponibles
+                                const keys = Object.keys(data).filter(k => k !== 'timestamp' && k !== 'metadata');
+                                for (const key of keys) {
+                                    if (data[key] && typeof data[key] === 'string') {
+                                        outputHTML += `${data[key]}<br>`;
+                                    }
+                                }
+                            }
+
+                            // Actualizar en tiempo real
+                            answer.innerHTML = outputHTML;
+                            // Auto-scroll al final
+                            answer.parentElement.scrollTop = answer.parentElement.scrollHeight;
+                        } catch (e) {
+                            console.warn("Failed to parse SSE:", e);
+                        }
+                    }
                 }
             }
         } catch (error) {
